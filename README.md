@@ -13,7 +13,7 @@ The files are large (about 15 GB with full-resolution textures), so they are hos
 
 **https://archive.org/details/bannerlord-reference-blender**
 
-Download `Bannerlord-Reference-Distribution.7z`, extract it with [7-Zip](https://www.7-zip.org/) (free), and open the `.blend`
+Download `Bannerlord-Reference-Distribution.7z` (14.4 GB, MD5 `a45e5fc7a4e8c63787690cbb774e6d8f`), extract it with [7-Zip](https://www.7-zip.org/) (free), and open the `.blend`
 files. This repository holds the documentation, the licence and the relocation script only.
 
 Everything here is derived from TaleWorlds' game assets (Native and the Naval DLC). See LICENSE.md for what that means.
