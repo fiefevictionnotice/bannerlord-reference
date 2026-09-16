@@ -1,0 +1,95 @@
+# Bannerlord Reference (Blender)
+
+Blender 4.4 reference files rebuilt from Mount & Blade II: Bannerlord's own scene and prefab data, for modders who want to
+study, measure or block out Bannerlord-style architecture and scenes in Blender.
+
+![Native village empire_village_a rebuilt in Blender](images/village_scene.png)
+
+![The material library asset browser](images/material_library.png)
+
+## Download
+
+The files are large (about 15 GB with full-resolution textures), so they are hosted on the Internet Archive, not in this repository:
+
+**https://archive.org/details/bannerlord-reference-blender**
+
+Download `Bannerlord-Reference-Distribution.7z`, extract it with [7-Zip](https://www.7-zip.org/) (free), and open the `.blend`
+files. This repository holds the documentation, the licence and the relocation script only.
+
+Everything here is derived from TaleWorlds' game assets (Native and the Naval DLC). See LICENSE.md for what that means.
+## What's in the folder
+
+| File | Contents |
+|---|---|
+| `Bannerlord-Reference-Buildings.blend` | 1,600+ Native and Naval DLC building prefabs, one collection per culture (Empire, Vlandia, Aserai, Khuzait, Sturgia, Nord, Battania, Shared), sub-divided into Walls, Towers & Gates, Keeps, Houses, Farm & Utility, Misc, Modular, DLC. Every prefab keeps its in-game entity hierarchy (Empty per entity, meshes underneath). |
+| `Bannerlord-Prop-Production-Buildings.blend` | The same set on a plain working scene. |
+| `Bannerlord-Scene-empire_village_a.blend` | The Native village scene `empire_village_a` rebuilt entity by entity, with its terrain heightmap and paint layers. |
+| `Bannerlord-Mesh-Library.blend` | Every mesh the files above use, one prototype object each, sorted into `Lib_<Culture>` collections. The other files append from it. |
+| `deps\textures\...` | Only the textures the blends reference, at native resolution, in the same folder layout as the material library they came from. |
+| `tools\` | `Relocate-BannerlordReference.ps1` (+ `bl_relocate.py`): copies or moves this folder somewhere else and keeps every texture path valid. `texconv.exe` is only used by its optional downscale switch. |
+
+## Installing / moving the folder
+
+You need Blender 4.4 (or newer 4.x) installed. Nothing else.
+
+**Simplest:** unzip the whole folder anywhere and open the `.blend` files. All texture paths are relative, so the folder
+works from any location as long as you keep it together (the blends, `deps\` and `tools\` side by side).
+
+**With the script** (when you want it in a specific place, or want smaller textures):
+
+1. Open PowerShell in this folder (Shift + right-click the folder background > "Open PowerShell window here", or type
+   `powershell` in the folder's address bar).
+2. Run one of:
+
+   ```powershell
+   # copy to Documents\Bannerlord-Reference (the default)
+   .\tools\Relocate-BannerlordReference.ps1
+
+   # copy to a folder of your choice
+   .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference"
+
+   # same, but with every texture downscaled to 2048 px (much lighter in the viewport, about a quarter of the size)
+   .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference" -MaxTexture 2048
+
+   # move instead of copy (the source is deleted only if everything copied and remapped cleanly)
+   .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference" -Move
+   ```
+
+3. Wait for the `done ->` line. The script finds Blender itself; if it can't, pass `-Blender "C:\path\to\blender.exe"`.
+
+If Windows refuses to run the script ("running scripts is disabled on this system"), start it as
+`powershell -ExecutionPolicy Bypass -File .\tools\Relocate-BannerlordReference.ps1 ...` instead; nothing else changes.
+
+What it does: copies the folder, asks Blender which files each `.blend` references, copies those into `deps\`, then rewrites the
+paths inside the copied blends so they point at the copies. It never modifies the folder it copies from (unless you pass `-Move`).
+A full-resolution copy is about 17 GB and takes a minute or two on an SSD.
+
+## Using the files
+
+* Collections are **disabled** (unticked in the outliner) by default so a file opens fast. Tick a culture or category on to see it.
+* Every prefab is an Empty named after the prefab; its parts are parented underneath. Move the Empty, not the parts.
+* Objects carry custom properties: `bl_mesh` (engine mesh name), `bl_prefab` (prefab the entity instanced), `bl_bend_amount` /
+  `bl_bend_center` on entities that use the engine's mesh bender (they also get a SimpleDeform modifier as an approximation).
+* Objects named `BEND~...` carry the mesh bender; objects tagged `bl_sheared` have a sheared engine transform baked into a mesh copy.
+* Materials use the engine material names, so an FBX export links back to the game's materials in the Modding Kit editor.
+* Material Preview on a whole culture at once loads a lot of 4k/8k textures. Enable one category at a time, or set
+  Preferences > Viewport > Textures > Limit Size to 2048.
+
+## Known gaps
+
+* A handful of engine materials have no exportable textures and show as flat colour: editor helpers, one water shader, `vineyard_a_animated`.
+* Flora painted on terrain (grass, bushes placed by the terrain paint system) is not reproduced.
+* The mesh-bender deformation is an approximation (axis and magnitude tuned by eye).
+
+## Licence and credits
+
+Three parts, three owners; see `LICENSE.md` for the full text:
+
+* **Game assets** (every mesh, texture, material and scene layout): © TaleWorlds Entertainment, from Mount & Blade II:
+  Bannerlord and the War Sails DLC. No ownership is claimed here. Use is governed by TaleWorlds' mod terms
+  (<https://www.taleworlds.com/en/static/mtla>): non-commercial modding of the game only.
+* **The reference layout, reconstruction and this documentation**: CC BY-NC-SA 4.0
+  (<https://creativecommons.org/licenses/by-nc-sa/4.0/>). Credit the maintainer, no commercial use, share alike.
+* **The scripts in `tools\`**: MIT. `texconv.exe` is Microsoft DirectXTex, MIT, see `THIRD-PARTY-NOTICES.md`.
+
+Maintainer: FiefEvictionNotice.

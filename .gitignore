@@ -1,0 +1,5 @@
+*.blend
+*.blend1
+deps/
+*.7z
+*.zip
