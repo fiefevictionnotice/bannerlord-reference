@@ -1,4 +1,4 @@
-# Licence
+# License
 
 This package has three kinds of content with three different owners. Read all three sections.
 
@@ -25,20 +25,20 @@ that DLC. If TaleWorlds asks for this package, or any part of it, to be taken do
 
 The work that is *not* TaleWorlds' — the way the assets are organised into cultures and categories, the rebuilt entity
 hierarchies, the terrain and paint-layer reconstruction, the collection structure, custom properties, labels and this
-documentation — is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International** licence.
+documentation — is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International** license.
 
 * Human-readable summary: <https://creativecommons.org/licenses/by-nc-sa/4.0/>
 * Full legal text: <https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode>
 
 In short: you may share and adapt this work for non-commercial purposes, you must credit the maintainer and link to this
-licence, and anything you build on it must be released under the same terms. This licence covers only the maintainer's
+license, and anything you build on it must be released under the same terms. This license covers only the maintainer's
 contribution; it does not and cannot cover the game assets in section 1.
 
 Attribution line to use: `Bannerlord Reference (Blender) by FiefEvictionNotice, CC BY-NC-SA 4.0 — game assets © TaleWorlds Entertainment`
 
 ## 3. Scripts in `tools\` — MIT
 
-`Relocate-BannerlordReference.ps1` and `bl_relocate.py` are released under the MIT licence:
+`Relocate-BannerlordReference.ps1` and `bl_relocate.py` are released under the MIT license:
 
 ```
 MIT License
@@ -59,7 +59,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
-`tools\texconv.exe` is a third-party program (Microsoft DirectXTex) and is covered by its own MIT licence; see
+`tools\texconv.exe` is a third-party program (Microsoft DirectXTex) and is covered by its own MIT license; see
 `THIRD-PARTY-NOTICES.md`.
 
 ## 4. No warranty

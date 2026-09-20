@@ -1,7 +1,7 @@
 # Bannerlord Reference (Blender)
 
 Blender 4.4 reference files rebuilt from Mount & Blade II: Bannerlord's own scene and prefab data, for modders who want to
-study, measure or block out Bannerlord-style architecture and scenes in Blender.
+modify, measure or block out Bannerlord-style architecture and scenes in Blender.
 
 ![Native village empire_village_a rebuilt in Blender](images/village_scene.png)
 
@@ -19,7 +19,7 @@ tree (blends at the top, textures under `deps\textures\`). Open the extracted `.
 
 | Archive | Size | Contents | MD5 |
 |---|---|---|---|
-| `Bannerlord-Reference-01-Blends-Tools.7z` | 2.1 GB | all five `.blend` files, docs, licence, `tools\`, asset catalog. **Required.** | `e0626adda0c0593e831f001ae8c1d11f` |
+| `Bannerlord-Reference-01-Blends-Tools.7z` | 2.1 GB | all five `.blend` files, docs, license, `tools\`, asset catalog. **Required.** | `e0626adda0c0593e831f001ae8c1d11f` |
 | `Bannerlord-Reference-02-Textures-Architecture-Empire.7z` | 1.7 GB | Empire building textures | `5f67bf5393dc8881c2a0c5eb32e8c629` |
 | `Bannerlord-Reference-03-Textures-Architecture-Shared.7z` | 1.6 GB | shared building textures (used by every culture) | `ff8e7b5bbdb3c5e167a26b1e3207aac6` |
 | `Bannerlord-Reference-04-Textures-Architecture-Cultures-Extra.7z` | 0.8 GB | Vlandia, Battania, Sturgia, Khuzait, Aserai building textures + misc | `112cf5e17871cd78e8f525db08a00df1` |
@@ -32,7 +32,7 @@ tree (blends at the top, textures under `deps\textures\`). Open the extracted `.
 Archive 01 works on its own (meshes, hierarchy and material names are all there); anything whose textures you have not
 downloaded just shows as flat colour. The same MD5 list is in `CHECKSUMS.md5` on the archive page.
 
-This repository holds the documentation, the licence, the relocation script and the one file small enough to live here:
+This repository holds the documentation, the license, the relocation script and the one file small enough to live here:
 `Bannerlord-Physics-Materials.blend` (160 KB, no textures; see "Physics materials" below). Everything else is in the archive.
 
 Everything here is derived from TaleWorlds' game assets (Native and the Naval DLC). See LICENSE.md for what that means.
@@ -121,7 +121,7 @@ The materials are plain flat colours, only their names matter. Weapon / shield /
 * Flora painted on terrain (grass, bushes placed by the terrain paint system) is not reproduced.
 * The mesh-bender deformation is an approximation (axis and magnitude tuned by eye).
 
-## Licence and credits
+## License and credits
 
 Three parts, three owners; see `LICENSE.md` for the full text:
 
