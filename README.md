@@ -13,10 +13,15 @@ The files are large (about 15 GB with full-resolution textures), so they are hos
 
 **https://archive.org/details/bannerlord-reference-blender**
 
-Download `Bannerlord-Reference-Distribution.7z` (14.4 GB, MD5 `a45e5fc7a4e8c63787690cbb774e6d8f`), extract it with [7-Zip](https://www.7-zip.org/) (free), and open the `.blend`
-files. This repository holds the documentation, the licence and the relocation script only.
+**Status (2026-09-19): the archive upload is being redone.** The first attempt failed part-way, and the package has since gained the
+physics-material library. Until `Bannerlord-Reference-Distribution.7z` is listed on that page, only the small files are there. When it
+is: download it, extract with [7-Zip](https://www.7-zip.org/) (free), and open the `.blend` files.
+
+This repository holds the documentation, the licence, the relocation script and the one file small enough to live here:
+`Bannerlord-Physics-Materials.blend` (160 KB, no textures; see "Physics materials" below). Everything else is in the archive.
 
 Everything here is derived from TaleWorlds' game assets (Native and the Naval DLC). See LICENSE.md for what that means.
+
 ## What's in the folder
 
 | File | Contents |
@@ -25,6 +30,8 @@ Everything here is derived from TaleWorlds' game assets (Native and the Naval DL
 | `Bannerlord-Prop-Production-Buildings.blend` | The same set on a plain working scene. |
 | `Bannerlord-Scene-empire_village_a.blend` | The Native village scene `empire_village_a` rebuilt entity by entity, with its terrain heightmap and paint layers. |
 | `Bannerlord-Mesh-Library.blend` | Every mesh the files above use, one prototype object each, sorted into `Lib_<Culture>` collections. The other files append from it. |
+| `Bannerlord-Physics-Materials.blend` | The 41 physics materials from the game's `physics_materials.xml` (`stone`, `wood`, `wood_nonstick`, `adobe`, `metal`, ...) as Blender asset materials, colour-coded with the engine's own display colours, with friction / arrows-stick / flammable notes in the description. No textures. See "Physics materials" below. |
+| `blender_assets.cats.txt` | Asset catalog file for the line above. Only needed if you register this folder as an asset library. |
 | `deps\textures\...` | Only the textures the blends reference, at native resolution, in the same folder layout as the material library they came from. |
 | `tools\` | `Relocate-BannerlordReference.ps1` (+ `bl_relocate.py`): copies or moves this folder somewhere else and keeps every texture path valid. `texconv.exe` is only used by its optional downscale switch. |
 
@@ -74,6 +81,24 @@ A full-resolution copy is about 17 GB and takes a minute or two on an SSD.
 * Materials use the engine material names, so an FBX export links back to the game's materials in the Modding Kit editor.
 * Material Preview on a whole culture at once loads a lot of 4k/8k textures. Enable one category at a time, or set
   Preferences > Viewport > Textures > Limit Size to 2048.
+
+## Physics materials
+
+Bannerlord picks the physics material of a collision mesh (`bo_<name>`) from the **name of the material** on it: a face with a
+material called `stone` becomes stone, `wood_nonstick` becomes wood that arrows don't stick to, and any name the engine does not
+know silently falls back to `default`. So the trick is just to spell the names right.
+
+`Bannerlord-Physics-Materials.blend` gives you every valid name as a drag-and-drop asset:
+
+1. Preferences > File Paths > Asset Libraries > `+`, pick this folder (or open the blend and append the materials you need).
+2. In the Asset Browser choose *Bannerlord Native > Physics Materials*.
+3. Select the `bo_` object, Edit Mode, select the faces of one part, drag the material onto the mesh. Use *Append (Reuse Data)*
+   so a second use does not create `stone.001` (the `.001` would break the match).
+4. Repeat per part and export. In the Modding Kit, switch on the physics display to check: each part shows the material's colour,
+   the same colours these assets use in Solid view. Anything in the `default` colour has a name the engine did not recognise.
+
+The materials are plain flat colours, only their names matter. Weapon / shield / missile entries (`metal_weapon`, `wood_shield`,
+`missile`, ...) are for items, not scene props.
 
 ## Known gaps
 

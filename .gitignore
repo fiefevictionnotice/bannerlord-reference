@@ -3,3 +3,4 @@
 deps/
 *.7z
 *.zip
+!Bannerlord-Physics-Materials.blend
