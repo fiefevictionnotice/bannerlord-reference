@@ -114,6 +114,53 @@ know silently falls back to `default`. So the trick is just to spell the names r
 The materials are plain flat colours, only their names matter. Weapon / shield / missile entries (`metal_weapon`, `wood_shield`,
 `missile`, ...) are for items, not scene props.
 
+## How to import your first asset
+
+The short version of getting something you built in Blender into the Modding Kit editor, with materials, LODs and
+collision set up automatically on import instead of by hand afterwards. It assumes you already have a module folder
+(`Modules\<YourModule>\` with a `SubModule.xml`) and that its `Assets\` folder exists.
+
+**1. Prepare the mesh in Blender.** The importer reads everything it needs from names, so get the names right before you export:
+
+* **Materials.** Give every material the exact name of the engine material you want (`empire_wall_a`, `roman_brick_b`, `nord_rock_set01`
+  and so on, the same names you see on the reference meshes). On import the editor links a material with a known name to the
+  game's own material, textures and shader flags included. A name the engine does not know becomes an empty placeholder
+  material you would have to set up yourself.
+* **LODs.** Put the lower-detail versions in the same file, named `<mesh>.lod1`, `<mesh>.lod2`, ... (`my_wall`, `my_wall.lod1`,
+  `my_wall.lod2`). The importer groups them as LOD levels of `my_wall`. Two or three levels are enough for a building piece;
+  anything scattered in the hundreds (rocks, cliffs) wants more.
+* **Collision.** Add a simple mesh named `bo_<mesh>` (`bo_my_wall`). That prefix makes it the physics shape instead of a
+  visible mesh. Keep it low-poly and closed. The **material names on the collision faces** set the physics materials
+  (`stone`, `wood`, `adobe`, ...); use `Bannerlord-Physics-Materials.blend` for the valid names, see "Physics materials" above.
+* **Transform.** Work in metres with the origin where you want the pivot, apply rotation and scale, and keep Z up.
+
+**2. Export.** File > Export > FBX, selected objects only, with the visible mesh, its LODs and the `bo_` mesh selected.
+Use Apply Scalings = FBX All so the file arrives at 1:1. Leave animation and armature off for a static prop.
+
+**3. Launch the editor with your module enabled.** In the launcher pick *Modding Kit*, tick your module under Mods, and
+start the editor. If the module is not ticked its folder will not appear in the editor at all.
+
+**4. Import.** Click **Resource Browser** in the editor's top toolbar (hover the icons if you are not sure which one).
+In the tree, open your module, go into its `Assets` folder, right-click the empty area and choose **Import New Asset**. Pick the
+FBX. In the import settings that pop up, keep the mesh and material options on and make sure the physics option is on, then
+confirm. The mesh appears in that folder with its LODs and body attached; if a material shows as a plain placeholder,
+its name did not match an engine material.
+
+**5. Check it.** Double-click the mesh to open it in the viewer: cycle the LODs, and switch on the physics display to see the
+collision shape with each face tinted in its physics material's colour. Anything in the `default` colour has a material name
+the engine did not recognise.
+
+**6. Save the asset package.** Save in the Resource Browser (Ctrl+S with it focused). The editor compiles the module's assets
+into `Modules\<YourModule>\AssetPackages\<package>.tpac`, which is what the game and other players actually load. An imported
+asset that has not been saved is only in the editor's memory.
+
+**7. Use it.** Create a prefab from it (place the mesh in a scene, tidy the entity, right-click > Save as prefab, or add it to
+one of your module's `Prefabs\*.xml`) and it becomes a normal prop for scene work. For multiplayer, remember that clients only
+load prefabs from Native and from your module, so prefabs saved into SandBoxCore will not show up in a match.
+
+If something imports 100 times too big or lying on its side, the FBX scale or axis settings are the culprit, not the editor;
+re-export with the scale and forward/up axes adjusted and import again over the top.
+
 ## Known gaps
 
 * A handful of engine materials have no exportable textures and show as flat colour: editor helpers, one water shader, `vineyard_a_animated`.
