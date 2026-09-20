@@ -128,7 +128,9 @@ collision set up automatically on import instead of by hand afterwards. It assum
   material you would have to set up yourself.
 * **LODs.** Put the lower-detail versions in the same file, named `<mesh>.lod1`, `<mesh>.lod2`, ... (`my_wall`, `my_wall.lod1`,
   `my_wall.lod2`). The importer groups them as LOD levels of `my_wall`. Two or three levels are enough for a building piece;
-  anything scattered in the hundreds (rocks, cliffs) wants more.
+  anything scattered in the hundreds (rocks, cliffs) wants more. The simplest way to make progressively simpler LODs (lower
+  detail as you get to the higher LOD) is a progressively higher decimate value with a modifier. Manual cleanup will typically
+  still be required for the best results. 
 * **Collision.** Add a simple mesh named `bo_<mesh>` (`bo_my_wall`). That prefix makes it the physics shape instead of a
   visible mesh. Keep it low-poly and closed. The **material names on the collision faces** set the physics materials
   (`stone`, `wood`, `adobe`, ...); use `Bannerlord-Physics-Materials.blend` for the valid names, see "Physics materials" above.
