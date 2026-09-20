@@ -48,7 +48,7 @@ Everything here is derived from TaleWorlds' game assets (Native and the Naval DL
 | `Bannerlord-Physics-Materials.blend` | The 41 physics materials from the game's `physics_materials.xml` (`stone`, `wood`, `wood_nonstick`, `adobe`, `metal`, ...) as Blender asset materials, colour-coded with the engine's own display colours, with friction / arrows-stick / flammable notes in the description. No textures. See "Physics materials" below. |
 | `blender_assets.cats.txt` | Asset catalog file for the line above. Only needed if you register this folder as an asset library. |
 | `deps\textures\...` | Only the textures the blends reference, at native resolution, in the same folder layout as the material library they came from. |
-| `tools\` | `Relocate-BannerlordReference.ps1` (+ `bl_relocate.py`): copies or moves this folder somewhere else and keeps every texture path valid. `texconv.exe` is only used by its optional downscale switch. |
+| `tools\` | `Relocate-BannerlordReference.ps1` (+ `bl_relocate.py`, `texconv.exe`): makes a copy of this folder with every texture downscaled to a size you choose. See "Optional: lighter textures". |
 
 ## Installing
 
