@@ -131,5 +131,6 @@ Three parts, three owners; see `LICENSE.md` for the full text:
 * **The reference layout, reconstruction and this documentation**: CC BY-NC-SA 4.0
   (<https://creativecommons.org/licenses/by-nc-sa/4.0/>). Credit the maintainer, no commercial use, share alike.
 * **The scripts in `tools\`**: MIT. `texconv.exe` is Microsoft DirectXTex, MIT, see `THIRD-PARTY-NOTICES.md`.
+* **No warranty**: the whole package is provided as is, at your own risk; see section 4 of `LICENSE.md`.
 
 Maintainer: FiefEvictionNotice.

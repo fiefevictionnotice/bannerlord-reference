@@ -61,3 +61,11 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 `tools\texconv.exe` is a third-party program (Microsoft DirectXTex) and is covered by its own MIT licence; see
 `THIRD-PARTY-NOTICES.md`.
+
+## 4. No warranty
+
+The entire package, including the game assets in section 1, the reconstruction and documentation in section 2 and the
+scripts in section 3, is provided **"as is"**, without warranty of any kind, express or implied, including but not limited to
+fitness for a particular purpose, accuracy, completeness or non-infringement. The maintainer is not liable for any claim,
+damage or other loss arising from the use of, or inability to use, any part of it, including damage to your files, your
+Blender or Bannerlord installation, or any mod built from it. You use it entirely at your own risk.
