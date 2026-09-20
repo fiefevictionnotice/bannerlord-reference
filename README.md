@@ -9,13 +9,28 @@ study, measure or block out Bannerlord-style architecture and scenes in Blender.
 
 ## Download
 
-The files are large (about 15 GB with full-resolution textures), so they are hosted on the Internet Archive, not in this repository:
+The files are large (about 15.6 GB with full-resolution textures), so they are hosted on the Internet Archive, not in this repository:
 
 **https://archive.org/details/bannerlord-reference-blender**
 
-**Status (2026-09-19): the archive upload is being redone.** The first attempt failed part-way, and the package has since gained the
-physics-material library. Until `Bannerlord-Reference-Distribution.7z` is listed on that page, only the small files are there. When it
-is: download it, extract with [7-Zip](https://www.7-zip.org/) (free), and open the `.blend` files.
+The package is nine separate 7-Zip archives. Download the ones you want into one folder and extract each one **into that same
+folder** with [7-Zip](https://www.7-zip.org/) (free); their contents interleave into a single `Bannerlord-Reference-Distribution`
+tree (blends at the top, textures under `deps\textures\`). Open the extracted `.blend` files in Blender 4.4.
+
+| Archive | Size | Contents | MD5 |
+|---|---|---|---|
+| `Bannerlord-Reference-01-Blends-Tools.7z` | 2.1 GB | all five `.blend` files, docs, licence, `tools\`, asset catalog. **Required.** | `e0626adda0c0593e831f001ae8c1d11f` |
+| `Bannerlord-Reference-02-Textures-Architecture-Empire.7z` | 1.7 GB | Empire building textures | `5f67bf5393dc8881c2a0c5eb32e8c629` |
+| `Bannerlord-Reference-03-Textures-Architecture-Shared.7z` | 1.6 GB | shared building textures (used by every culture) | `ff8e7b5bbdb3c5e167a26b1e3207aac6` |
+| `Bannerlord-Reference-04-Textures-Architecture-Cultures-Extra.7z` | 0.8 GB | Vlandia, Battania, Sturgia, Khuzait, Aserai building textures + misc | `112cf5e17871cd78e8f525db08a00df1` |
+| `Bannerlord-Reference-05-Textures-DLC-A.7z` | 2.0 GB | War Sails DLC textures, part A | `e5b81b9e0a3172776154a50c328dd341` |
+| `Bannerlord-Reference-06-Textures-DLC-B.7z` | 2.0 GB | War Sails DLC textures, part B | `6012e207b81e951908f33267f9d13236` |
+| `Bannerlord-Reference-07-Textures-Nature.7z` | 2.2 GB | terrain, rock, cliff and plant textures | `4671cc178ca8f49ff83e2451914a42b1` |
+| `Bannerlord-Reference-08-Textures-Equipment.7z` | 1.4 GB | equipment textures referenced by props | `0567daa0e19e88b3492e376290870a07` |
+| `Bannerlord-Reference-09-Textures-Shared-Props.7z` | 1.8 GB | shared and prop textures | `22e459c0665df990f419b243d5046403` |
+
+Archive 01 works on its own (meshes, hierarchy and material names are all there); anything whose textures you have not
+downloaded just shows as flat colour. The same MD5 list is in `CHECKSUMS.md5` on the archive page.
 
 This repository holds the documentation, the licence, the relocation script and the one file small enough to live here:
 `Bannerlord-Physics-Materials.blend` (160 KB, no textures; see "Physics materials" below). Everything else is in the archive.
