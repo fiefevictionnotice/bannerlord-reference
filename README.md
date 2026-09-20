@@ -134,3 +134,7 @@ Three parts, three owners; see `LICENSE.md` for the full text:
 * **No warranty**: the whole package is provided as is, at your own risk; see section 4 of `LICENSE.md`.
 
 Maintainer: FiefEvictionNotice.
+
+## AI Use Disclaimer
+
+All other sections, all content, etc. was written largely by Claude CLI in Sept. 2026. I may or may not be responsive to issues in the future, but if Taleworlds wants me to pull down this content from GitHub and Archive.org, I'm open to doing that. I haven't made anything available that wasn't already available to the public, it's just more accessible than it would be otherwise. 
