@@ -32,7 +32,7 @@ tree (blends at the top, textures under `deps\textures\`). Open the extracted `.
 Archive 01 works on its own (meshes, hierarchy and material names are all there); anything whose textures you have not
 downloaded just shows as flat colour. The same MD5 list is in `CHECKSUMS.md5` on the archive page.
 
-This repository holds the documentation, the license, the relocation script and the one file small enough to live here:
+This repository holds the documentation, the license, the texture-downscale script and the one file small enough to live here:
 `Bannerlord-Physics-Materials.blend` (160 KB, no textures; see "Physics materials" below). Everything else is in the archive.
 
 Everything here is derived from TaleWorlds' game assets (Native and the Naval DLC). See LICENSE.md for what that means.
@@ -50,41 +50,40 @@ Everything here is derived from TaleWorlds' game assets (Native and the Naval DL
 | `deps\textures\...` | Only the textures the blends reference, at native resolution, in the same folder layout as the material library they came from. |
 | `tools\` | `Relocate-BannerlordReference.ps1` (+ `bl_relocate.py`): copies or moves this folder somewhere else and keeps every texture path valid. `texconv.exe` is only used by its optional downscale switch. |
 
-## Installing / moving the folder
+## Installing
 
 You need Blender 4.4 (or newer 4.x) installed. Nothing else.
 
-**Simplest:** unzip the whole folder anywhere and open the `.blend` files. All texture paths are relative, so the folder
-works from any location as long as you keep it together (the blends, `deps\` and `tools\` side by side).
+Extract the archives into one folder and open the `.blend` files. All texture paths are relative, so the folder works from
+any location as long as you keep it together (the blends, `deps\` and `tools\` side by side). Move or copy it with Explorer
+whenever you like; nothing inside needs updating.
 
-**With the script** (when you want it in a specific place, or want smaller textures):
+## Optional: lighter textures
+
+The textures ship at native resolution, many at 4k and 8k. That is why the package is 15 GB, and why Material Preview on a
+whole culture can exhaust an ordinary GPU. `tools\Relocate-BannerlordReference.ps1` makes a **downscaled copy** of the
+folder: it copies everything to a destination, runs every texture through `texconv.exe` at the size you choose, and rewrites
+the paths inside the copied blends to match. The folder you started from is not touched.
 
 1. Open PowerShell in this folder (Shift + right-click the folder background > "Open PowerShell window here", or type
    `powershell` in the folder's address bar).
 2. Run one of:
 
    ```powershell
-   # copy to Documents\Bannerlord-Reference (the default)
-   .\tools\Relocate-BannerlordReference.ps1
-
-   # copy to a folder of your choice
-   .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference"
-
-   # same, but with every texture downscaled to 2048 px (much lighter in the viewport, about a quarter of the size)
+   # copy to D:\Blender\Bannerlord-Reference with every texture capped at 2048 px (about a quarter of the size)
    .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference" -MaxTexture 2048
 
-   # move instead of copy (the source is deleted only if everything copied and remapped cleanly)
-   .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference" -Move
+   # 1024 px is plenty for blocking out and fits almost any GPU
+   .\tools\Relocate-BannerlordReference.ps1 -Destination "D:\Blender\Bannerlord-Reference" -MaxTexture 1024
    ```
 
 3. Wait for the `done ->` line. The script finds Blender itself; if it can't, pass `-Blender "C:\path\to\blender.exe"`.
 
+Without `-MaxTexture` the script only makes a verified full-size copy (or, with `-Move`, moves the folder and deletes the
+source once every path checks out). Explorer does that job just as well, so the switch is the reason to run it.
+
 If Windows refuses to run the script ("running scripts is disabled on this system"), start it as
 `powershell -ExecutionPolicy Bypass -File .\tools\Relocate-BannerlordReference.ps1 ...` instead; nothing else changes.
-
-What it does: copies the folder, asks Blender which files each `.blend` references, copies those into `deps\`, then rewrites the
-paths inside the copied blends so they point at the copies. It never modifies the folder it copies from (unless you pass `-Move`).
-A full-resolution copy is about 17 GB and takes a minute or two on an SSD.
 
 ## Using the files
 
